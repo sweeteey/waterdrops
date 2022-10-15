@@ -1,5 +1,6 @@
 #include<iostream>
 #include<iomanip>
+#include<math.h>
 using namespace std;
 
 #define NUM 20
@@ -19,10 +20,10 @@ int order[NUM];
  * */
 struct Job {
     string id;
-    float in_time;
-    float run_time;
-    float start_time;
-    float end_time;
-    float T_time;
-    float W_time;
+    double in_time;
+    double run_time;
+    double start_time;
+    double end_time;
+    double T_time;
+    double W_time;
 };
