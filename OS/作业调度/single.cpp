@@ -149,6 +149,7 @@ int main() {
     int n;
     cin>>n;
     Job *job = init(n);
+    SortByInTime(job, n);
 
     cout<<endl<<"====================="<<endl;
     cout<<"FCFS调度算法:"<<endl;

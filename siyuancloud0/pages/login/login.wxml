@@ -1,0 +1,15 @@
+
+<view>
+  <view style='font-family:Georgia, ‘Times New Roman’, Times, serif;'>
+    <view>输入账号：</view>
+  </view> 
+</view>
+<input class="input" bindinput="getid"></input>  
+<view >
+  <view style='font-family:Georgia, ‘Times New Roman’, Times, serif;'>
+    <view>输入密码：</view>
+  </view> 
+</view>
+<input class="input" bindinput="getsecret"></input>  
+<button style="display:block;margin:0 auto" bindtap="login">登录</button> 
+

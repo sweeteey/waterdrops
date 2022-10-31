@@ -1,0 +1,27 @@
+<view id="searchOuterView">
+    <view id="searchInnerView" style=' font-family:cursive;'>
+        <image src="/image/sousuo.png"></image>
+        <text>克己复礼翻译</text>
+    </view>
+</view>
+<view class='point-item-right'>
+        <view class='bx_btn' hover-class="bx_btn_click" bindtap='fabiao'style=' font-family:cursive;'>发帖</view>
+      </view>
+<image class="imagebox1" src="/image/huoyan.png"   mode="aspectFit" ></image>
+
+<view class='box1' >
+  <view class='box2' style='font-family:Georgia, ‘Times New Roman’, Times, serif;'>
+    <view>优问推送</view>
+  </view> 
+</view>
+<block wx:for="{{datalist}}" wx:key="index">
+  <view class="itemRoot" style=' font-family:cursive;'>
+     <view  class="box3">
+    <text >{{item.name}}</text>
+     </view>
+    <view class="box4">
+    <text >{{item.desc}}</text>
+     </view>
+  </view>
+</block>
+

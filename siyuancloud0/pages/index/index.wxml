@@ -1,0 +1,19 @@
+<view>
+  <view style='font-family:Georgia, ‘Times New Roman’, Times, serif;'>
+    <view>输入用户名：</view>
+  </view> 
+</view>
+<input class="input" bindinput="getName"></input>  
+<view>
+  <view style='font-family:Georgia, ‘Times New Roman’, Times, serif;'>
+    <view>输入用户账号：</view>
+  </view> 
+</view>
+<input class="input" bindinput="getid"></input>  
+<view>
+  <view style='font-family:Georgia, ‘Times New Roman’, Times, serif;'>
+    <view>输入用户密码：</view>
+  </view> 
+</view>
+<input class="input" bindinput="getsecret"></input>  
+<button bindtap="sign_in" style="display:block;margin:0 auto" >注册</button>

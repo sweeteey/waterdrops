@@ -15,16 +15,16 @@ void Show(Job job[], int n)
 
     for (int i = 0; i < n; i++)
     {
-        cout << job[order[i]].id << "     ";
-        ShowD(job[order[i]].in_time);
+        cout << job[i].id << "     ";
+        ShowD(job[i].in_time);
         cout<< "     ";
-        cout << job[order[i]].run_time << "       ";
-        ShowD(job[order[i]].start_time);
+        cout << job[i].run_time << "       ";
+        ShowD(job[i].start_time);
         cout<< "     ";
-        ShowD(job[order[i]].end_time);
+        ShowD(job[i].end_time);
         cout<< "     ";
-        cout << job[order[i]].T_time << "       ";
-        cout << job[order[i]].W_time << endl;
+        cout << job[i].T_time << "       ";
+        cout << job[i].W_time << endl;
     }
 }
 

@@ -7,6 +7,11 @@ using namespace std;
 
 //存放作业运行次序
 int order[NUM];
+//双道中运行次序
+int order1[NUM];
+int count1 = 0;
+int order2[NUM];
+int count2 = 0;
 
 
 /***

@@ -1,0 +1,22 @@
+<!--index.wxml-->
+<view class='box'>
+  <view style='font-family:Georgia, ‘Times New Roman’, Times, serif;'>
+    <view>welcome</view>
+  </view> 
+</view>
+
+<image class="imagebox" src="/image/logo1.png"   mode="aspectFit"  style="background-position:-10px -10px"></image>
+
+<image class="imagebox1" src="/image/siyuan.png"   mode="aspectFit"  style="background-position:-10px -10px"></image>
+
+
+
+<view  class="btns">
+   <button  class="submitbtn" form-type="submit"  bindtap='login'>
+       登录
+   </button>
+   <button class="resetbtn" form-type="reset"  bindtap='signin'>
+       注册
+   </button>
+</view>
+

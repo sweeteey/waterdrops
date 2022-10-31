@@ -1,0 +1,5 @@
+/* pages/fabiao/fabiao.wxss */
+.itemRoot{
+  border-bottom:rgb(209, 73, 73);
+  margin:15rpx;
+}

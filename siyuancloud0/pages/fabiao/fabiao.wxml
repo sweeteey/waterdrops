@@ -1,0 +1,6 @@
+<block wx:for="{{datalist}}"wx:key="index">
+  <view class="itemRoot">
+    <text>{{item.name}}</text>
+    <text>{{item.desc}}</text>
+  </view>
+</block>

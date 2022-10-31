@@ -1,0 +1,23 @@
+Page({
+  fabiao(){
+    wx.navigateTo({
+      url:'../fabu/fabu',
+    })
+  },
+  data:{
+    datalist:[]
+  },
+onLoad(){
+  wx.cloud.database().collection("homelist")
+    .get()
+    .then(res=>{
+      console.log("获取成功",res)
+     this.setData({
+      datalist:res.data
+    })
+  })
+    .catch(res=>{
+      console.log("获取失败",res)
+    })
+  }
+})

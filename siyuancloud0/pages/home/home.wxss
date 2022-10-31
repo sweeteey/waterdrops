@@ -1,0 +1,106 @@
+/* 顶部搜索框样式 */
+#searchOuterView{
+  /*设置内边距*/
+  padding:20rpx;
+}
+#searchInnerView{
+  /*内容居中*/
+  text-align: center;
+  /* 设置宽高*/
+  width: 600rpx;
+  height:60rpx;
+  /*设置背景颜色*/
+  background:#eeeeee;
+  /*设置边框*/
+  border:2rpx solid #ececee;
+  /*设置边框圆角*/
+  border-radius: 30rpx;
+  /*设置行高*/
+  line-height: 52rpx;
+  /*设置边框包含在宽高之内*/
+  box-sizing: border-box;
+  position: relative; 
+  top: 20rpx;   
+}
+#searchInnerView > image{
+  /* 给图片设置宽和高 */
+  width:40rpx;
+  height:40rpx;
+  /*设置垂直对齐方式*/
+  vertical-align: middle;
+  position: relative; 
+  right: 120rpx;
+}
+#searchInnerView > image{
+  /* 给文字设置大小 */
+  font-size:24rpx;
+  /* 给文字设置颜色 */
+  color: #b2b2b2;
+}
+.imagebox{
+  height: 25px; 
+  position: relative; 
+  top: 40rpx;  
+  left: 300rpx;   
+  }
+  /*火焰*/
+  .imagebox1{
+    height: 25px; 
+    position: relative;
+    top: 5rpx;  
+    left: -330rpx; 
+    }
+.box1{
+    font-weight:700;
+    font-size: 20px;
+    position: relative;
+    top:-60rpx; 
+    left:80rpx;
+  }
+  .box2{
+    border-bottom: 2px solid gainsboro ;
+    width: 200rpx;
+  }
+
+/*发帖*/
+.bx_btn {
+  width: 100rpx;
+  height: 40rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background: #337AB7;
+  opacity: 0.6;
+  border: 1px solid#d0d0d0;
+  border-radius: 60rpx;
+  font-size: 14px;
+  position: relative; 
+  left:630rpx;
+  top:-50rpx;
+}
+
+.bx_btn_click {
+  color: white;
+  background: #ec9f10;
+}
+.itemRoot{
+  border-bottom:rgb(209, 73, 73);
+  margin:15rpx;
+}
+.box3{
+  font-weight:700;
+  font-size: 20px;
+  position: relative;
+  text-align:left;
+  top: 0px;
+}
+.box4{
+  font-weight:700;
+  font-size: 10px;
+  position: relative;
+  text-align:left ;
+
+}
+
+
