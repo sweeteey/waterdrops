@@ -145,9 +145,6 @@ void HRRN(Job job[], int n) {
 // }
 
 int main() {
-    cout<<"请输入作业的个数: ";
-    int n;
-    cin>>n;
     Job *job = init(n);
     SortByInTime(job, n);
 

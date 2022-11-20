@@ -34,6 +34,8 @@ void Show(Job job[], int n)
 void Clear(Job job[],int n) {
     memset(order, 0, sizeof(order));
     for (int i=0; i<n; i++) {
+        job[i].status = 0; //double¸
+        job[i].remain = job[i].run_time; //double
         job[i].start_time = 0;
         job[i].end_time = 0;
         job[i].T_time = 0;
@@ -111,12 +113,12 @@ Job *SortByInTime(Job job[], int n)
 Job* init(int n) {
     cout<<"请依次输入每个作业的编号、进入时间、运行时间,每输入完一个作业的信息请回车"<<endl;
     cout<<"其中 进入时间以小数形式输入,例如8:30输入为8.30"<<endl;
-
-    Job* job = new Job[n];
+    
     for (int i=0; i<n; i++) {
         cin>>job[i].id;
         cin>>job[i].in_time;
         cin>>job[i].run_time;
+        job[i].remain = job[i].run_time; //double
     }
     return job;
 }

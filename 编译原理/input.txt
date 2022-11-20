@@ -1,0 +1,20 @@
+int BubbleSort(int a[], int n) {
+	int end = n;
+	while (end) {
+		int flag = 0;
+		for (int i = 1; i < end; i++) {
+			if (a[i-1] > a[i]) {
+				int temp = a[i];
+				a[i] = a[i-1];
+				a[i-1] = temp;
+				flag = 1;
+			}
+			//Total++;
+		}
+		if (flag == 0) {
+			break;
+		}
+		end--;
+	}
+	return 0;
+}
