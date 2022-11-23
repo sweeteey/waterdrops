@@ -50,6 +50,3 @@ struct Job
     double T_time;
     double W_time;
 };
-
-int n = 4;
-Job* job = new Job[n];

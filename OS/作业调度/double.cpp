@@ -6,6 +6,9 @@
 #include "func.cpp"
 #include <queue>
 
+int n = 4; //作业数
+Job* job = new Job[n];
+
 const int num = 2; //环境道数
 int remain_num;    //剩余环境道数
 
@@ -14,33 +17,18 @@ double timeblock;       //时间标志
 
 int D_end; //剩余作业数
 
+
 queue<int> ready; //就绪队列
 queue<int> run;   //运行队列
-
-
-//SJF和HRRN需要用到优先队列，这里定义其排序方法
-struct SJF_cmp {
-    bool operator() (int i, int j) {
-        return job[i].run_time > job[j].run_time;
-    }
-}; //SJF中，run_time小的优先
-struct HRRN_cmp {
-    bool operator() (int i, int j) {
-        return GetR(job[i], timeblock) < GetR(job[j], timeblock);
-    }
-}; //HRRN中，响应比大的优先
-
-priority_queue<int, vector<int>, SJF_cmp> SJF_ready; //SJF就绪队列
-priority_queue<int, vector<int>, SJF_cmp> SJF_in; //SJF输入井
-
-priority_queue<int, vector<int>, HRRN_cmp> HRRN_ready; //HRRN就绪队列
-priority_queue<int, vector<int>, HRRN_cmp> HRRN_in; //HRRN输入井
-
+int* input = new int[n]; //输入井
 
 double D_GetEndTime(Job &j); //获取周转时间,带权周转时间
 int IsReady(Job j); //判断是否能入就绪队列
 void Timecontrol(Job job[]); //时间片到后的快照
 void Dispatch(Job job[]); //调度run和ready
+void delete_q(queue<int> &q); //释放队列中元素
+void sort_runtime(int *&input, int count); //根据运行时间排序--SJF
+void sort_R(int *&input, int count); //根据响应比排序--HRRN
 
 void D_FCFS(Job job[], int n);
 void D_SJF(Job job[], int n);
@@ -103,17 +91,13 @@ int IsReady(Job j)
 //下一个时间片到
 void Timecontrol(Job job[])
 {
-    if (job[run.front()].remain < 0)
-        exit(1);
-
     timeblock = M_to_D(D_to_M(timeblock) + block);
-
     job[run.front()].remain -= block;
 
     //若时间片到时，作业运行完
     if (job[run.front()].remain == 0)
     {
-        cout << "job" << run.front() << "运行完..." << endl;
+        cout << job[run.front()].id << "运行完..." << endl;
         D_end--;
         job[run.front()].status = 3;
         job[run.front()].end_time = timeblock;
@@ -133,7 +117,7 @@ void Dispatch(Job job[])
     {
         if (!ready.empty())
         {
-            cout << "就绪队列队首job" << ready.front() << "入运行队列..." << endl;
+            cout << "就绪队列队首" << job[ready.front()].id << "入运行队列..." << endl;
             //将ready队首推入run
             run.push(ready.front());
             //运行的作业status=2
@@ -152,6 +136,58 @@ void Dispatch(Job job[])
     else
         Timecontrol(job);
 }
+
+/*******释放queue中的元素**********/
+void delete_q(queue<int> &q){
+    while(!q.empty()) {
+        job[q.front()].status = 0;
+        q.pop();
+        remain_num++;
+    }
+}
+
+/*******SJF排序**********/
+void sort_runtime(int *&input, int count) {
+    int end = count;
+    while (end)
+    {
+        int flag = 0; //记录是否有交换
+        for (int i = 1; i < end; i++)
+        {
+            if (job[input[i-1]].run_time > job[input[i]].run_time) {
+                int temp = input[i-1];
+                input[i-1] = input[i];
+                input[i] = temp;
+                flag = 1;
+            }
+        }
+        if (flag == 0)
+            break;
+        end--;
+    }
+}
+
+/*******HRRN排序**********/
+void sort_R(int *&input, int count) {
+    int end = count;
+    while (end)
+    {
+        int flag = 0; //记录是否有交换
+        for (int i = 1; i < end; i++)
+        {
+            if (GetR(job[input[i-1]], timeblock) < GetR(job[input[i]], timeblock)) {
+                int temp = input[i-1];
+                input[i-1] = input[i];
+                input[i] = temp;
+                flag = 1;
+            }
+        }
+        if (flag == 0)
+            break;
+        end--;
+    }
+}
+
 
 /******先来先服务调度算法*********/
 //初始时间timeblock设置为第一个作业进入时间，即为job[0].in_time
@@ -182,7 +218,7 @@ void D_FCFS(Job job[], int n)
                 job[i].status = 1;
                 remain_num--;
                 ready.push(i);
-                cout << "job" << i << "入就绪队列" << endl;
+                // cout << "job" << i << "入就绪队列" << endl;
             }
         }
         Dispatch(job);
@@ -196,26 +232,38 @@ void D_SJF(Job job[], int n)
     remain_num = num;
     D_end = n;
 
-
+    // int kuang = 10;
     while (D_end)
     {
+        // kuang--;
+        // if (kuang <=0) exit(1);
+        int count = 0;
+        for (int i=0; i<n; i++) {
+            input[i] = -1;
+        }
         //遍历作业，查看：是否有作业进入输入井
         for (int i = 0; i<n; i++) {
             if (job[i].in_time <= timeblock && job[i].status == 0) {
-                SJF_in.push(i);
+                input[count++] = i;
             }
         }
-        //进入输入井
-        while (remain_num > 0) {
-            int temp = SJF_in.top();
-            SJF_in.pop();
-            SJF_ready.push(temp);
-            job[temp].start_time = timeblock;
+        sort_runtime(input, count);
+        //进入就绪队列
+        int count_in = 0;
+        while(count!=0 && remain_num>0) {
+            int temp = input[count_in++];
+            ready.push(temp);
             job[temp].status = 1;
             remain_num--;
-            cout<<job[temp].id<<"入就绪队列" << endl;
+            count--;
+            //未入过就绪队列
+            if (job[temp].start_time == 0) {
+                job[temp].start_time = timeblock;
+            }
+            // cout<<job[temp].id<<"入就绪队列" << endl;
         }
         Dispatch(job);
+        delete_q(ready);
     }
 }
 
@@ -226,50 +274,59 @@ void D_HRRN(Job job[], int n)
     remain_num = num;
     D_end = n;
 
-
     while (D_end)
     {
+        int count = 0;
+        for (int i=0; i<n; i++) {
+            input[i] = 0;
+        }
         //遍历作业，查看：是否有作业进入输入井
         for (int i = 0; i<n; i++) {
             if (job[i].in_time <= timeblock && job[i].status == 0) {
-                HRRN_in.push(i);
+                input[count++] = i;
             }
         }
+        sort_R(input, count);
         //进入输入井
-        while (remain_num > 0) {
-            int temp = HRRN_in.top();
-            HRRN_in.pop();
-            HRRN_ready.push(temp);
-            job[temp].start_time = timeblock;
+        int count_in = 0;
+        while(count!=0 && remain_num>0) {
+            int temp = input[count_in++];
+            ready.push(temp);
             job[temp].status = 1;
             remain_num--;
-            cout<<job[temp].id<<"入就绪队列" << endl;
+            count--;
+            //未入过就绪队列
+            if (job[temp].start_time == 0) {
+                job[temp].start_time = timeblock;
+            }
+            // cout<<job[temp].id<<"入就绪队列" << endl;
         }
         Dispatch(job);
+        delete_q(ready);
     }
 }
 
 
 int main()
 {
-    //Job *job = init(n);
-    //SortByInTime(job, n);
-
-    job[0].id = "job0";
+    job[0].id = "job1";
     job[0].in_time = 10.00;
     job[0].run_time = job[0].remain = 30;
 
-    job[1].id = "job1";
+    job[1].id = "job2";
     job[1].in_time = 10.05;
     job[1].run_time = job[1].remain = 20;
 
-    job[2].id = "job2";
+    job[2].id = "job3";
     job[2].in_time = 10.10;
-    job[2].run_time = job[2].remain = 5;
+    job[2].run_time = job[2].remain = 15;
 
-    job[3].id = "job3";
-    job[3].in_time = 10.20;
+    job[3].id = "job4";
+    job[3].in_time = 10.15;
     job[3].run_time = job[3].remain = 10;
+
+    // Job *job = init(n);
+    // SortByInTime(job, n);
 
     cout<<endl<<"====================="<<endl;
     cout<<"FCFS调度算法:"<<endl;
