@@ -1,7 +1,6 @@
 #include<iostream>
 #include<fstream>
 #include<string>
- 
 using namespace std;
  
 #define MAX_KEYWORD 100
