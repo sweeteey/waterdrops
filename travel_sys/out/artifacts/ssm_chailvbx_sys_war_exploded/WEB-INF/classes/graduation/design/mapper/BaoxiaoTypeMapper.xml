@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="graduation.design.mapper.BaoxiaoTypeMapper">
+	<resultMap type="BaoxiaoType" id="baoxiaoTypeResultMap">
+		<id property="id" column="id" />
+		<result property="s_0" column="name" />
+		<result property="s_1" column="bz" />
+	</resultMap>
+
+	<delete id="deleteObject" parameterType="int">
+		delete from t_baoxiaoType where id=#{id};
+	</delete>
+
+	<select id="selectObject" parameterType="int" resultMap="baoxiaoTypeResultMap">
+		SELECT t_baoxiaoType.id,
+			   t_baoxiaoType.name,
+			   t_baoxiaoType.bz
+		  FROM t_baoxiaoType
+		 WHERE t_baoxiaoType.id = #{id}
+	</select>
+
+	<select id="getObjectList"  resultMap="baoxiaoTypeResultMap" parameterType="java.util.Map">
+		SELECT t_baoxiaoType.id,
+			   t_baoxiaoType.name,
+			   t_baoxiaoType.bz
+		  FROM t_baoxiaoType
+		 WHERE 1 = 1
+		<if test="field == 's_0'">
+			and t_baoxiaoType.name like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_1'">
+			and t_baoxiaoType.bz like '%${fieldValue}%'
+		</if>
+	</select>
+
+	<insert id="insertObject" parameterType="BaoxiaoType">
+		INSERT INTO t_baoxiaoType(name, bz)
+				VALUES(#{s_0}, #{s_1})
+	</insert>
+
+	<update id="updateObject" parameterType="BaoxiaoType">
+		UPDATE t_baoxiaoType set name=#{s_0}, bz=#{s_1}
+				where id=#{id}
+	</update>
+
+</mapper>
+

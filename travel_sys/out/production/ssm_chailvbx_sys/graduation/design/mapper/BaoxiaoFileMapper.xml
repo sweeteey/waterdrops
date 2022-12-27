@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="graduation.design.mapper.BaoxiaoFileMapper">
+	<resultMap type="BaoxiaoFile" id="baoxiaoFileResultMap">
+		<id property="id" column="id" />
+		<result property="s_0" column="f_uploadName" />
+		<result property="s_1" column="f_fileName" />
+		<result property="s_2" column="f_uploadTime" />
+		<result property="s_3" column="huafeiz" />
+		<result property="s_4" column="baoxiaoz" />
+		<result property="s_5" column="bz" />
+		<association property="baoxiaoStatus" column="baoxiaoStatus_id"
+					 select="graduation.design.mapper.BaoxiaoStatusMapper.selectObject"/>
+		<association property="baoxiaoType" column="baoxiaoType_id"
+					 select="graduation.design.mapper.BaoxiaoTypeMapper.selectObject"/>
+		<association property="xibie" column="xibie_id"
+					 select="graduation.design.mapper.XibieMapper.selectObject"/>
+		<association property="user" column="user_id"
+					 select="graduation.design.mapper.UserMapper.selectObject"/>
+	</resultMap>
+
+	<delete id="deleteObject" parameterType="int">
+		delete from t_baoxiaoFile where id=#{id};
+	</delete>
+
+	<select id="selectObject" parameterType="int" resultMap="baoxiaoFileResultMap">
+		SELECT t_baoxiaoFile.id,
+			   t_baoxiaoFile.f_uploadName,
+			   t_baoxiaoFile.f_fileName,
+			   t_baoxiaoFile.f_uploadTime,
+			   t_baoxiaoFile.huafeiz,
+			   t_baoxiaoFile.baoxiaoz,
+			   t_baoxiaoFile.bz,
+			   t_baoxiaoStatus.id baoxiaoStatus_id,
+			   t_baoxiaoType.id baoxiaoType_id,
+			   t_xibie.id xibie_id,
+			   t_user.id user_id
+		FROM t_baoxiaoFile, t_baoxiaoStatus, t_baoxiaoType, t_xibie, t_user
+		WHERE t_baoxiaoFile.id = #{id}
+		  AND t_baoxiaoFile.baoxiaoStatus_id = t_baoxiaoStatus.id
+		  AND t_baoxiaoFile.baoxiaoType_id = t_baoxiaoType.id
+		  AND t_baoxiaoFile.xibie_id = t_xibie.id
+		  AND t_baoxiaoFile.user_id = t_user.id
+	</select>
+
+	<select id="getObjectList"  resultMap="baoxiaoFileResultMap" parameterType="java.util.Map">
+		SELECT t_baoxiaoFile.id,
+		t_baoxiaoFile.f_uploadName,
+		t_baoxiaoFile.f_fileName,
+		t_baoxiaoFile.f_uploadTime,
+		t_baoxiaoFile.huafeiz,
+		t_baoxiaoFile.baoxiaoz,
+		t_baoxiaoFile.bz,
+		t_baoxiaoStatus.id baoxiaoStatus_id,
+		t_baoxiaoType.id baoxiaoType_id,
+		t_xibie.id xibie_id,
+		t_user.id user_id
+		FROM t_baoxiaoFile, t_baoxiaoStatus, t_baoxiaoType, t_xibie, t_user
+		WHERE 1 = 1
+		AND t_baoxiaoFile.baoxiaoStatus_id = t_baoxiaoStatus.id
+		<if test="field == 't_baoxiaoStatus.s_0'">
+			and t_baoxiaoStatus. like '%${fieldValue}%'
+		</if>
+		AND t_baoxiaoFile.baoxiaoType_id = t_baoxiaoType.id
+		<if test="field == 't_baoxiaoType.s_0'">
+			and t_baoxiaoType.name like '%${fieldValue}%'
+		</if>
+		AND t_baoxiaoFile.xibie_id = t_xibie.id
+		<if test="field == 't_xibie.s_0'">
+			and t_xibie.t_name like '%${fieldValue}%'
+		</if>
+		AND t_baoxiaoFile.user_id = t_user.id
+		<if test="field == 't_user.s_0'">
+			and t_user.u_name like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_0'">
+			and t_baoxiaoFile.f_uploadName like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_1'">
+			and t_baoxiaoFile.f_fileName like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_2'">
+			and t_baoxiaoFile.f_uploadTime like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_3'">
+			and t_baoxiaoFile.huafeiz like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_4'">
+			and t_baoxiaoFile.baoxiaoz like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_5'">
+			and t_baoxiaoFile.bz like '%${fieldValue}%'
+		</if>
+	</select>
+
+	<insert id="insertObject" parameterType="BaoxiaoFile">
+		INSERT INTO t_baoxiaoFile(f_uploadName, f_fileName, f_uploadTime, huafeiz, baoxiaoz, bz, baoxiaoStatus_id , baoxiaoType_id , xibie_id , user_id )
+		VALUES(#{s_0}, #{s_1}, #{s_2}, #{s_3}, #{s_4}, #{s_5}, #{baoxiaoStatus.id}, #{baoxiaoType.id}, #{xibie.id}, #{user.id})
+	</insert>
+
+	<update id="updateObject" parameterType="BaoxiaoFile">
+		UPDATE t_baoxiaoFile set f_uploadName=#{s_0}, f_fileName=#{s_1}, f_uploadTime=#{s_2}, huafeiz=#{s_3}, baoxiaoz=#{s_4}, bz=#{s_5}, baoxiaoStatus_id =#{baoxiaoStatus.id} , baoxiaoType_id =#{baoxiaoType.id} , xibie_id =#{xibie.id} , user_id =#{user.id}
+		where id=#{id}
+	</update>
+
+</mapper>
+

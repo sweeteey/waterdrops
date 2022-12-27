@@ -1,0 +1,2 @@
+abcde.txt	15	30	5	1	0	1	0
+hello.txt	20	0	5	1	1	1	5
