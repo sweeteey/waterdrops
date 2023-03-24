@@ -1,0 +1,111 @@
+/* 使用page就是为了保证  满屏 */
+
+page {
+  width: 100%;
+  height: 100%;
+}
+
+.view_contain {
+  width: 100%;
+  height: 100%;
+  background: #f0eeed
+}
+
+/* 第一部分 */
+
+.view_1 {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 25%;
+  background: #2b4b6b;
+}
+
+.view_image_text {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.image_radius {
+  height: 50px;
+  width: 50px;
+  border-radius: 30px;
+}
+
+/* 第二部分 */
+
+.view_2 {
+  width: 100%;
+  height: 15%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background: white;
+}
+
+.view_tupianwenzi {
+  display: flex;
+  flex-direction: column;
+  width: 120rpx;
+  align-items: center;
+  margin-left: 25rpx;
+  margin-right: 25rpx;
+}
+
+.image_tupian {
+  display: flex;
+  width: 100rpx;
+  height: 100rpx;
+}
+
+/* 第三部分 */
+
+.view_3 {
+  width: 100%;
+  height: 50%;
+  /* background: #f0eeed; */
+}
+
+.list-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 100rpx;
+  margin-top: 20rpx;
+  position: relative; /*父元素位置要设置为相对*/
+  background: white;
+}
+
+.item-image {
+  width: 50rpx;
+  height: 50rpx;
+  margin: 20rpx;
+}
+
+.item-text {
+  color: gray;
+  font-size: 35rpx;
+  margin-left: 20rpx;
+}
+
+.image-jiantou {
+  width: 20rpx;
+  height: 35rpx;
+  position: absolute; /* 要约束所在位置的子元素的位置要设置成绝对 */
+  right: 0; /* 靠右调节 */
+  margin-right: 35rpx;
+}
+
+/* 黑线 使得产生阴影效果 */
+
+.line {
+  width: 100%;
+  height: 3rpx;
+  background: lightgray;
+  margin-left: 90rpx;
+}

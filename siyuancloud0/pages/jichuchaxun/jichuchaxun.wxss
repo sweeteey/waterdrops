@@ -1,0 +1,26 @@
+/* pages/jichuchaxun/jichuchaxun.wxss */
+page{
+  background-color:#fff
+}
+.txt{
+  margin:20rpx auto;
+  font-size:35rpx;
+  font-family:"Microsoft YaHei"
+}
+.txtarea{
+  margin-top:20rpx;
+  border:1rpx solid #e2e2e2
+}
+.translatearea{
+  border:1rpx solid #e2e2e2;
+  margin-top:10rpx
+}
+.translatetxt{
+  margin:20rpx auto;
+  font-size:35rpx;
+  font-family:"Microsoft YaHei"
+}
+.but{
+  display:flex;
+  margin:60rpx auto
+}

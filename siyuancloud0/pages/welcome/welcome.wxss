@@ -71,7 +71,6 @@ button {
 
 .submitbtn{
   width:45% !important;
-  float: left;
 }
 
 .resetbtn{

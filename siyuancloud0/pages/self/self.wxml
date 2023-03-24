@@ -1,0 +1,56 @@
+<view class="view_contain">
+  <!-- 第一部分 -->
+  <view class="view_1">
+    <view class="view_image_text">
+      <image class="image_radius" src="/image/timg.png" />
+      <text style="color: #ffff; font-size: medium;">一颗卷柏</text>
+    </view>
+  </view>
+  <!-- 第二部分 -->
+  <view class="view_2">
+    <view class="view_tupianwenzi">
+      <image class="image_tupian" src="/image/test1.png"></image>
+      <text class="text_saoyisao" style="font-size: xx-small;">视频投稿</text>
+    </view>
+    <view class="view_tupianwenzi">
+      <image class="image_tupian" src="/image/test2.png"></image>
+      <text class="text_saoyisao" style="font-size: xx-small;">我的译本</text>
+    </view>
+    <view class="view_tupianwenzi">
+      <image class="image_tupian" src="/image/test3.png"></image>
+      <text class="text_saoyisao" style="font-size: xx-small;">我的问题</text>
+    </view>
+    <view class="view_tupianwenzi">
+      <image class="image_tupian" src="/image/test4.png"></image>
+      <text class="text_saoyisao" style="font-size: xx-small;">我的解答</text>
+    </view>
+
+  </view>
+  <!-- 第三部分 -->
+  <view class="view_3">
+    <view class="list-item">
+      <image class="item-image" src="/image/test5.png"></image>
+      <text class="item-text">我的金币</text>
+      <image class="image-jiantou" src="/image/jiantou.png"></image>
+    </view>
+    <view class="line"></view>
+    <view class="list-item">
+      <image class="item-image" src="/image/test6.png"></image>
+      <text class="item-text">用户反馈</text>
+      <image class="image-jiantou" src="/image/jiantou.png"></image>
+    </view>
+    <view class="line"></view>
+    <view class="list-item">
+      <image class="item-image" src="/image/test8.png"></image>
+      <text class="item-text">我的通知</text>
+      <image class="image-jiantou" src="/image/jiantou.png"></image>
+    </view>
+    <view class="line"></view>
+    <view class="list-item">
+      <image class="item-image" src="/image/test9.png"></image>
+      <text class="item-text">设置</text>
+      <image class="image-jiantou" src="/image/jiantou.png"></image>
+    </view>
+    <view class="line"></view>
+  </view>
+</view>

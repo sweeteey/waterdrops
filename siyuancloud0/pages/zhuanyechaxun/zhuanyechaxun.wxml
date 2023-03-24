@@ -1,0 +1,43 @@
+<!--pages/zhuanyechaxun/zhuanyechaxun.wxml-->
+<view>
+  <!-- 搜索框 -->
+  <view id="searchOuterView">
+    <view id="searchInnerView" style="font-family: cursive;">
+      <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+      <input type="text" class="weui-search-bar__input" placeholder="《离骚》译本" bindinput="getKey" />
+    </view>
+  </view>
+  <!-- 搜索按钮 -->
+  <view class='point-item-right'>
+    <view class='bx_btn' hover-class="bx_btn_click" bindtap='sousuo' style=' font-family:cursive;'>
+      搜索
+    </view>
+  </view>
+</view>
+
+<!-- 搜索结果 -->
+<block wx:for="{{datalist}}" wx:key="index">
+  <!-- 中文 -->
+  <view class="chinese">
+    <view class="box1">【出处】</view>
+    <view class="box2">出自{{item.from}}</view>
+    <view class="box3">{{item.cn}}</view>
+  </view>
+  <!-- 分割线 -->
+  <view class="fenge">
+    <image src="/image/fenge1.png" style="height: 100%; width: 100%;"></image>
+  </view>
+  <!-- 英文 -->
+  <view class="english">{{item.en}}
+  
+  </view>
+  <!-- 图片 -->
+  <!--
+  <view class="tupian">
+    <image src="/image/lunyu.png" style="height: 100%; width: 100%;"></image>
+    <view class="lianjie">
+      <navigator url="https://xueshu.baidu.com/usercenter/paper/show?paperid=5c4b441807be736544fa040c3c7a3dfb&site=xueshu_se">
+        点击查看此书</navigator>
+    </view>
+  </view>-->
+</block>

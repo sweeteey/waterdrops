@@ -10,13 +10,22 @@
 <image class="imagebox1" src="/image/siyuan.png"   mode="aspectFit"  style="background-position:-10px -10px"></image>
 
 
-
+<!--
 <view  class="btns">
-   <button  class="submitbtn" form-type="submit"  bindtap='login'>
+   <button  class="submitbtn" form-type="submit"  bindtap='login' style="margin-left: 90px;">
        登录
    </button>
    <button class="resetbtn" form-type="reset"  bindtap='signin'>
        注册
    </button>
+</view> 
+-->
+
+<!-- userInfo如果为空证明没有登录 -->
+<view class="btns">
+  <button wx-if="{{!userInfo}}" bindtap="login" class="submitbtn" form-type="submit" style="margin-left: 90px;">
+    登录
+  </button>
 </view>
+
 

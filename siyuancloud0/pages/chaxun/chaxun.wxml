@@ -1,0 +1,56 @@
+<!--pages/chaxun/chaxun.wxml-->
+<view>
+  <!-- 搜索框 -->
+  <view id="searchOuterView">
+    <view id="searchInnerView" style="font-family: cursive;">
+      <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+      <input type="text" class="weui-search-bar__input" placeholder="《离骚》译本" bindtap="chaxun"/>
+    </view>
+  </view>
+  <!-- 搜索按钮 -->
+  <view class='point-item-right'>
+    <view class='bx_btn' hover-class="bx_btn_click" bindtap='chaxun' style=' font-family:cursive;'>
+      搜索
+    </view>
+  </view>
+</view>
+
+<!-- 图标 -->
+<view class="myban">
+  <view>
+    <image src="/image/jichuchaxun.png" class="png1"></image>
+    <image src="/image/shipinzhuanqu.png" class="png2"></image>
+  </view>
+  <view class="box_btn">
+    <view hover-class="bx_btn_click" bindtap='jichucihui' style=' font-family:cursive;'>
+      基础词汇
+    </view>
+    <view hover-class="bx_btn_click" bindtap='shipingzhuanqu' style=' font-family:cursive;'>
+      视频专区
+    </view>
+  </view>
+</view>
+
+<!-- 分割线 -->
+<view class="fenge">
+  <image src="/image/fenge.png" style="height: 100%; width: 100%;"></image>
+</view>
+
+<!-- 每日推荐 -->
+<image class="huoyan" src="/image/huoyan.png" mode="aspectFit"></image>
+<view class='box1'>
+  <view class='box2' style='font-family:Georgia, ‘Times New Roman’, Times, serif;'>
+    <view>每日推荐</view>
+  </view>
+</view>
+<!-- 从数据库中读取 -->
+<block wx:for="{{datalist}}" wx:key="index">
+  <view class="itemRoot" style=' font-family:cursive;'>
+    <view class="box3">
+      <text>{{item.cn}}</text>
+    </view>
+    <view class="box4">
+      <text>{{item.en}}</text>
+    </view>
+  </view>
+</block>

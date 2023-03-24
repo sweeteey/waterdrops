@@ -1,0 +1,151 @@
+/* pages/chaxun/chaxun.wxss */
+
+/* 顶部搜索框样式 */
+#searchOuterView {
+  /*设置内边距*/
+  padding: 20rpx;
+}
+
+/* 搜索框内部样式 */
+#searchInnerView {
+  /*内容居中*/
+  text-align: center;
+  /* 设置宽高*/
+  width: 600rpx;
+  height: 60rpx;
+  /*设置背景颜色*/
+  background: #eeeeee;
+  /*设置边框*/
+  border: 2rpx solid #ececee;
+  /*设置边框圆角*/
+  border-radius: 30rpx;
+  /*设置行高*/
+  line-height: 52rpx;
+  /*设置边框包含在宽高之内*/
+  box-sizing: border-box;
+  position: relative;
+  top: 20rpx;
+}
+
+.weui-icon-search_in-box {
+  position: absolute;
+  left: 10px;
+  top: 7px;
+}
+
+.weui-search-bar__input {
+  height: 28px;
+  line-height: 28px;
+  font-size: 14px;
+}
+
+/*搜索*/
+.bx_btn {
+  width: 100rpx;
+  height: 40rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background: #337AB7;
+  opacity: 0.6;
+  border: 1px solid#d0d0d0;
+  border-radius: 60rpx;
+  font-size: 14px;
+  position: relative;
+  left: 630rpx;
+  top: -50rpx;
+}
+
+.bx_btn_click {
+  color: white;
+  background: #ec9f10;
+}
+
+
+/*图标*/
+.myban {
+  width: 320px;
+  height: 135px;
+  margin-top: 10px;
+}
+
+.png1 {
+  width: 120px;
+  height: 100px;
+  margin-left: 20px;
+}
+
+.png2 {
+  width: 120px;
+  height: 100px;
+  margin-left: 35px;
+}
+
+/*图标下按钮*/
+.box_btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.box_btn view {
+  border-radius: 60rpx;
+  width: 100px;
+  height: 50rpx;
+  margin-left: 45px;
+  display: flex;
+  justify-content: center;
+}
+
+/*分割*/
+.fenge {
+  width: 320px;
+  height: 30px;
+}
+
+/*火焰*/
+.huoyan {
+  height: 25px;
+  position: relative;
+  top: 5rpx;
+  left: -330rpx;
+}
+
+/*每日推荐*/
+.box1 {
+  font-weight: 700;
+  font-size: 20px;
+  position: relative;
+  top: -60rpx;
+  left: 80rpx;
+}
+
+.box2 {
+  border-bottom: 2px solid gainsboro;
+  width: 200rpx;
+}
+
+/*从数据库中读取*/
+.itemRoot {
+  border-bottom: 2px solid gainsboro;
+  margin: 15rpx;
+  height: 180px;
+}
+
+.box3 {
+  font-weight: 700;
+  font-size: 18px;
+  width: 190px;
+  height: 60px;
+  position: relative;
+  text-align: left;
+  top: 0px;
+}
+
+.box4 {
+  font-weight: 700;
+  font-size: 18px;
+  position: relative;
+  text-align: left;
+}

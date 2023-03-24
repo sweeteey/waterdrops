@@ -1,0 +1,22 @@
+<!--pages/jichuchaxun/jichuchaxun.wxml-->
+<view>
+<view>
+  <view class="choose">
+    <Select prop-array='{{selectArray}}' bind:select='select'></Select>
+  </view>
+  <view class="txtarea">
+    <textarea value="{{txt}}" bindinput="getInputValue" class="txt" placeholder="请输入..."></textarea>
+  </view>
+
+  <view class="translatearea">
+    <textarea value="{{translateResult}}" class="translatetxt" placeholder="翻译结果..."></textarea>
+  </view>
+</view>
+
+<view class="but">
+<button bindtap="translateBut" style="width:35vw;color:#ffffff;background-color:#3f00b5">翻译</button>
+<button bindtap="clearBut" style="width:35vw;color:#ffffff;background-color:#3f00b5">清空</button>
+</view>
+</view>
+
+
