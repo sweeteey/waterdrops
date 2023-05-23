@@ -1,7 +1,0 @@
-<!--pages/xiangqing/xiangqing.wxml-->
-<view>
-   <view>{{detail.name}}</view>
-   <view>{{detail.desc}}</view>
-</view>
-
-
