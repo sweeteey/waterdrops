@@ -1,5 +1,3 @@
-kuangkuang is my honey
-
 同步步骤:
 git add .
 git commit -m '<原因>'
